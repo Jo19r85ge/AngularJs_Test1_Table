@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-grid/4.7.1/ui-grid.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-grid/4.7.1/ui-grid.js"></script>
+    
+    <script src="User.js"></script>
+
+    <script src="App.js"></script>
+    <script src="IndexViewModel.js"></script>
+    <script src="LoginViewModel.js"></script>
+    <script src="RegisterViewModel.js"></script>
+
+    <style>
+    .myGrid 
+    {
+        width: 700px;
+        height: 500px;
+    }
+    </style>
+
+</head>
+<body ng-app="MyAPP">
+    <div ng-controller="IndexViewModel as IndexVM">
+        <input type="text" ng-model="IndexVM.Name"><br/>
+        <input type="text" ng-model="IndexVM.Surname1"><br/>
+        <input type="text" ng-model="IndexVM.Age"><br/>
+        <input type="text" ng-model="IndexVM.Car"><br/>
+
+        <button ng-click="IndexVM.CreateUser()">Crear Usuario</button><br/>
+
+        <div ui-grid="{ data: IndexVM.Users }" class="myGrid"></div>
+
+        <login ng-if="IndexVM.IsLogin"></login>
+        <register ng-if="!IndexVM.IsLogin"></register>
+
+        <button ng-click="IndexVM.ChangeViews()">Cambiar Vista</button><br/>
+    </div>
+</body>
+</html>
